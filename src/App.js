@@ -16,8 +16,6 @@ import {Home} from './components/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
-  console.log('variable de api', process.env.REACT_APP_API_URL);
-  console.log('todas las variables', process.env);
   return (
     <Router>
       {/* <Counter /> */}
