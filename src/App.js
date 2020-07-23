@@ -8,9 +8,9 @@ import { CreateProject } from './components/project/CreateProject';
 import { MenuProject } from './components/project/MenuProject';
 import { EditProject } from './components/project/EditProject';
 import {Dashboard} from './components/project/Dashboard';
-import {Project} from './components/project/Project';
 import {Projects} from './components/project/Projects';
 import {Me} from './components/profile/Me';
+import {Home} from './components/Home';
 
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -23,8 +23,8 @@ function App() {
 
         <Nav></Nav>
 
-        <Switch>
-          <div className="columns">
+        <div className="columns">
+          <Switch>
 
             {/* LOGGED */}
             <Route path="/dashboard">
@@ -35,10 +35,7 @@ function App() {
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/dashboard/creator" component={CreateProject} />
                 <Route exact path="/dashboard/projects" component={Projects}/>
-                <Route exact path="/dashboard/projects/:id" component={Project}/>
-                <Route exact path="/dashboard/projects/:id/edit">
-                  <EditProject projectName="Projecto1" projectDescription="La wahsada eseasakljd akljs dsa"></EditProject>
-                </Route>
+                <Route exact path="/dashboard/projects/:id" component={EditProject}/>
                 
               </div>
             </Route>
@@ -59,10 +56,15 @@ function App() {
                 <Me/>
               </div>
             </Route>
+            <Route exact path="/">
+              <div className="column">
+                <Home/>
+              </div>
+            </Route>
             
 
-          </div>
-        </Switch>
+          </Switch>
+        </div>
 
 
       </div>
