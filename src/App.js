@@ -1,50 +1,70 @@
 import React from 'react';
 // import { Counter } from './features/counter/Counter';
 
-import { Login } from './auth/Login';
-import {Signup} from './auth/Signup';
-import {Nav} from './Nav';
-import {CreateProyect} from './proyect/CreateProyect';
-import {MenuProyect} from './proyect/MenuProyect';
-import {EditProyect} from './proyect/EditProyect';
+import { Login } from './components/auth/Login';
+import { Signup } from './components/auth/Signup';
+import { Nav } from './Nav';
+import { CreateProject } from './components/project/CreateProject';
+import { MenuProject } from './components/project/MenuProject';
+import { EditProject } from './components/project/EditProject';
+import {Dashboard} from './components/project/Dashboard';
+import {Project} from './components/project/Project';
+import {Projects} from './components/project/Projects';
+import {Me} from './components/profile/Me';
 
 
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
       {/* <Counter /> */}
       <div className="container is-fluid">
-          
-          <Nav></Nav>
 
-          <hr></hr>
+        <Nav></Nav>
 
-          <Login/>
+        <Switch>
+          <div className="columns">
 
-          <hr></hr>
-
-          <Signup/>
-
-          <hr></hr>
-
-          <CreateProyect></CreateProyect>
-
-          <hr></hr>
-
-          <div className="container is-fluid">
-            <div className="columns">
+            {/* LOGGED */}
+            <Route path="/dashboard">
               <div className="column is-3">
-                <MenuProyect></MenuProyect>
+                <MenuProject></MenuProject>
               </div>
               <div className="column">
-                <EditProyect proyectName="Proyecto1" proyectDescription="La wahsada eseasakljd akljs dsa"></EditProyect>
+                <Route exact path="/dashboard" component={Dashboard}/>
+                <Route exact path="/dashboard/creator" component={CreateProject} />
+                <Route exact path="/dashboard/projects" component={Projects}/>
+                <Route exact path="/dashboard/projects/:id" component={Project}/>
+                <Route exact path="/dashboard/projects/:id/edit">
+                  <EditProject projectName="Projecto1" projectDescription="La wahsada eseasakljd akljs dsa"></EditProject>
+                </Route>
+                
               </div>
-            </div>
-          </div>
+            </Route>
 
-          <hr></hr>
+            {/* IF NOT LOGGED */}
+            <Route exact path="/login">
+              <div className="column">
+                <Login/>
+              </div>
+            </Route>
+            <Route exact path="/signup">
+              <div className="column">
+                <Signup/>
+              </div>
+            </Route>
+            <Route exact path="/me">
+              <div className="column">
+                <Me/>
+              </div>
+            </Route>
+            
+
+          </div>
+        </Switch>
+
+
       </div>
 
     </Router>

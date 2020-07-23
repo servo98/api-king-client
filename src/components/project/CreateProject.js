@@ -1,8 +1,9 @@
 import React from 'react';
 
-const CreateProyect = () => {
+const CreateProject = () => {
     return (
         <div>
+            <h1 class="title">Create Project</h1>
             <div className="field">
                 <label className="label">Email</label>
                 <div className="control has-icons-left has-icons-right">
@@ -19,7 +20,7 @@ const CreateProyect = () => {
             <div className="field">
                 <label className="label">Description</label>
                 <div className="control">
-                    <textarea className="textarea" placeholder="Describe your proyect :)"></textarea>
+                    <textarea className="textarea" placeholder="Describe your project :)"></textarea>
                 </div>
             </div>
             
@@ -35,4 +36,4 @@ const CreateProyect = () => {
     );
 };
 
-export { CreateProyect };
+export { CreateProject };
