@@ -3,15 +3,25 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProjects } from '../../redux/ProjectDuck';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 export const MenuProject = () => {
 
     const dispatch = useDispatch();
     const projects = useSelector((state) => state.projects.items);
 
-    useEffect(() => {
+    const { getAccessTokenSilently } = useAuth0();
+    
+    const changeToken = async () => {
+        const token = await getAccessTokenSilently();
+        window.localStorage.setItem('token', token);
         dispatch(fetchProjects());
-    }, [dispatch]);
+    };
+    
+    useEffect(() => {
+        changeToken()
+    }, []);
 
     return (
         <aside className="menu">

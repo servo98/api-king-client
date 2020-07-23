@@ -1,4 +1,4 @@
-import { services as axios } from '../utils/service';
+import axios from '../utils/service';
 
 const LOADING = "projects/LOADING";
 

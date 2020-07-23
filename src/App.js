@@ -1,8 +1,5 @@
 import React from 'react';
-// import { Counter } from './features/counter/Counter';
 
-import { Login } from './components/auth/Login';
-import { Signup } from './components/auth/Signup';
 import { Nav } from './Nav';
 import { CreateProject } from './components/project/CreateProject';
 import { MenuProject } from './components/project/MenuProject';
@@ -12,13 +9,12 @@ import {Projects} from './components/project/Projects';
 import {Me} from './components/profile/Me';
 import {Home} from './components/Home';
 
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
+
   return (
     <Router>
-      {/* <Counter /> */}
       <div className="container is-fluid">
 
         <Nav></Nav>
@@ -41,16 +37,6 @@ function App() {
             </Route>
 
             {/* IF NOT LOGGED */}
-            <Route exact path="/login">
-              <div className="column">
-                <Login/>
-              </div>
-            </Route>
-            <Route exact path="/signup">
-              <div className="column">
-                <Signup/>
-              </div>
-            </Route>
             <Route exact path="/me">
               <div className="column">
                 <Me/>
